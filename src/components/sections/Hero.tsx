@@ -69,9 +69,9 @@ export const HeroSection = () => {
       
       <div className="max-container h-screen flex flex-col justify-center items-center relative z-10">
         <div ref={parallaxRef} className="parallax-layer text-center">
-          {/* Profile Image */}
+          {/* Profile Image - Made BIGGER */}
           <div className="relative mb-8 inline-block">
-            <div className="w-32 h-32 sm:w-40 sm:h-40 overflow-hidden rounded-full border-2 border-skyBlue/50 p-1 glass">
+            <div className="w-40 h-40 sm:w-48 sm:h-48 overflow-hidden rounded-full border-2 border-skyBlue/50 p-1 glass">
               <img 
                 ref={imageRef}
                 src="/lovable-uploads/28fafc41-5780-4118-8775-6e8c1c19d72d.png" 
