@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect } from 'react';
-import { Github, ExternalLink, Code, FileCheck, ChevronRight, Browser } from 'lucide-react';
+import { Github, ExternalLink, Code, FileCheck, ChevronRight, Link } from 'lucide-react';
 
 const projects = [
   {
@@ -191,7 +191,7 @@ export const ProjectsSection = () => {
                   className="btn-glow flex items-center gap-2 text-sm py-2 px-4 rounded-full w-max interactive-element"
                   aria-label="View Selenium 4 in Java Certification"
                 >
-                  <Browser className="w-4 h-4" />
+                  <Link className="w-4 h-4" />
                   <span>View Certificate</span>
                 </a>
               </div>

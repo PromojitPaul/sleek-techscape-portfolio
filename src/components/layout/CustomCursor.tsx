@@ -86,7 +86,7 @@ export const CustomCursor = () => {
     width: clicked ? '24px' : linkHovered ? '36px' : '30px',
     height: clicked ? '24px' : linkHovered ? '36px' : '30px',
     opacity: hidden ? 0 : 0.65,
-    mixBlendMode: 'exclusion',
+    mixBlendMode: 'exclusion' as 'exclusion',
     transform: `translate(-50%, -50%) scale(${clicked ? 0.8 : linkHovered ? 1.2 : 1})`,
     transition: `
       transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),

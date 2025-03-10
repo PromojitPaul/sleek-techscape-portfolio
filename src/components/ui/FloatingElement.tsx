@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FloatingElementProps {
@@ -8,6 +8,7 @@ interface FloatingElementProps {
   className?: string;
   intensity?: number;
   rotateIntensity?: number;
+  style?: CSSProperties;
 }
 
 export const FloatingElement = ({
@@ -16,6 +17,7 @@ export const FloatingElement = ({
   className = '',
   intensity = 1,
   rotateIntensity = 1,
+  style = {},
 }: FloatingElementProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0, rotate: 0 });
@@ -103,13 +105,16 @@ export const FloatingElement = ({
     };
   }, [intensity, rotateIntensity]);
 
+  const combinedStyle: CSSProperties = {
+    transform: `translate3d(${position.x}px, ${position.y}px, 0) rotate(${position.rotate}deg)`,
+    ...style
+  };
+
   return (
     <div
       ref={elementRef}
       className={cn('floating-element relative', className)}
-      style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0) rotate(${position.rotate}deg)`,
-      }}
+      style={combinedStyle}
     >
       {children}
     </div>
