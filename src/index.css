@@ -166,9 +166,8 @@
   }
 
   .cursor-dot {
-    @apply fixed top-0 left-0 w-10 h-10 bg-skyBlue rounded-full pointer-events-none z-50 mix-blend-exclusion;
+    @apply fixed top-0 left-0 bg-skyBlue rounded-full pointer-events-none z-50 mix-blend-exclusion;
     transform: translate(-50%, -50%);
-    transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out, opacity 0.2s ease-out;
   }
   
   .nav-link {
@@ -245,4 +244,20 @@
       opacity: 1;
     }
   }
+  
+  @keyframes cursorPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(51, 195, 240, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(51, 195, 240, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(51, 195, 240, 0);
+    }
+  }
+}
+
+.animate-cursorPulse {
+  animation: cursorPulse 2s cubic-bezier(0.23, 1, 0.32, 1) infinite;
 }

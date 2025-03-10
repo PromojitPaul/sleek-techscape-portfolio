@@ -74,7 +74,7 @@ export const HeroSection = () => {
             <div className="w-32 h-32 sm:w-40 sm:h-40 overflow-hidden rounded-full border-2 border-skyBlue/50 p-1 glass">
               <img 
                 ref={imageRef}
-                src="/lovable-uploads/f3105848-df50-4c44-9bd7-eb2f55e64153.png" 
+                src="/lovable-uploads/28fafc41-5780-4118-8775-6e8c1c19d72d.png" 
                 alt="Promojit Paul" 
                 className="w-full h-full object-cover rounded-full"
               />
