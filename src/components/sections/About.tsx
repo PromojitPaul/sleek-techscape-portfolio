@@ -1,9 +1,28 @@
 
 import React from 'react';
-import { Code, Cpu, TestTube, FileCheck } from 'lucide-react';
+import { Code, Cpu, TestTube, FileCheck, CheckCircle2 } from 'lucide-react';
 import FloatingElement from '../ui/FloatingElement';
 
 export const AboutSection = () => {
+  const skillCategories = [
+    {
+      title: "Testing & Automation",
+      items: ["Selenium", "Cypress", "Postman", "JMeter", "TestNG"]
+    },
+    {
+      title: "Programming",
+      items: ["Java", "JavaScript", "Python", "TypeScript"]
+    },
+    {
+      title: "Tools & Frameworks",
+      items: ["Jenkins", "Git", "Docker", "Cucumber"]
+    },
+    {
+      title: "Expertise",
+      items: ["Test Automation", "API Testing", "Performance Testing", "CI/CD"]
+    }
+  ];
+
   return (
     <section id="about" className="section bg-deepBlack relative overflow-hidden">
       {/* Gradient background */}
@@ -16,7 +35,6 @@ export const AboutSection = () => {
             About Me
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">
-{/*             Professional Summary */}
             Bug Hunter
           </h2>
           <div className="w-24 h-1 bg-skyBlue/30 mx-auto rounded-full"></div>
@@ -50,55 +68,29 @@ export const AboutSection = () => {
             </div>
           </div>
           
-          {/* Skills Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <FloatingElement delay={100} intensity={0.3} className="h-full">
-              <div className="glass-card h-full">
-                <div className="mb-4 p-3 bg-white/5 rounded-full w-fit">
-                  <TestTube className="w-6 h-6 text-skyBlue" />
-                </div>
-                <h3 className="text-white font-medium text-lg mb-2">Quality Assurance</h3>
-                <p className="text-white/70 text-sm">
-                  Expertise in manual and automated testing methodologies, test case design, and defect management.
-                </p>
-              </div>
-            </FloatingElement>
+          {/* Skills & Expertise Section */}
+          <div className="glass-card h-full p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-gradient-blue mb-6">
+              Skills & Expertise
+            </h3>
             
-            <FloatingElement delay={200} intensity={0.3} className="h-full">
-              <div className="glass-card h-full">
-                <div className="mb-4 p-3 bg-white/5 rounded-full w-fit">
-                  <Code className="w-6 h-6 text-skyBlue" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {skillCategories.map((category, index) => (
+                <div key={index} className="space-y-3">
+                  <h4 className="font-medium text-white/90 border-b border-skyBlue/30 pb-2 mb-2">
+                    {category.title}
+                  </h4>
+                  <ul className="space-y-2">
+                    {category.items.map((skill, i) => (
+                      <li key={i} className="flex items-center gap-2 text-white/80">
+                        <CheckCircle2 className="w-4 h-4 text-skyBlue/80" />
+                        <span>{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-white font-medium text-lg mb-2">Automation</h3>
-                <p className="text-white/70 text-sm">
-                  Proficient in Selenium, Cypress, and building robust test frameworks using Page Object Model.
-                </p>
-              </div>
-            </FloatingElement>
-            
-            <FloatingElement delay={300} intensity={0.3} className="h-full">
-              <div className="glass-card h-full">
-                <div className="mb-4 p-3 bg-white/5 rounded-full w-fit">
-                  <Cpu className="w-6 h-6 text-skyBlue" />
-                </div>
-                <h3 className="text-white font-medium text-lg mb-2">Technology Stack</h3>
-                <p className="text-white/70 text-sm">
-                  Skilled in Python, Java, JavaScript, and various testing tools and frameworks.
-                </p>
-              </div>
-            </FloatingElement>
-            
-            <FloatingElement delay={400} intensity={0.3} className="h-full">
-              <div className="glass-card h-full">
-                <div className="mb-4 p-3 bg-white/5 rounded-full w-fit">
-                  <FileCheck className="w-6 h-6 text-skyBlue" />
-                </div>
-                <h3 className="text-white font-medium text-lg mb-2">Documentation</h3>
-                <p className="text-white/70 text-sm">
-                  Strong documentation skills for test plans, test cases, and bug reports with clear reproduction steps.
-                </p>
-              </div>
-            </FloatingElement>
+              ))}
+            </div>
           </div>
         </div>
       </div>

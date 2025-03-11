@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ExternalLink, Github, Linkedin } from 'lucide-react';
 import FloatingElement from '../ui/FloatingElement';
 import { getRandomDelay } from '@/utils/animation';
@@ -7,6 +7,7 @@ import { getRandomDelay } from '@/utils/animation';
 export const HeroSection = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Parallax effect
   useEffect(() => {
@@ -36,6 +37,10 @@ export const HeroSection = () => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   return (
@@ -72,14 +77,23 @@ export const HeroSection = () => {
       
       <div className="max-container h-screen flex flex-col justify-center items-center relative z-10">
         <div ref={parallaxRef} className="parallax-layer text-center">
-          {/* Profile Image - Made BIGGER */}
+          {/* Profile Image with loading optimizations */}
           <div className="relative mb-8 inline-block">
             <div className="w-44 h-44 sm:w-52 sm:h-52 overflow-hidden rounded-full border-2 border-skyBlue/60 p-1 glass">
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center rounded-full bg-deepBlack/50">
+                  <div className="w-8 h-8 border-2 border-skyBlue border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
               <img 
                 ref={imageRef}
                 src="/lovable-uploads/28fafc41-5780-4118-8775-6e8c1c19d72d.png" 
                 alt="Promojit Paul" 
-                className="w-full h-full object-cover rounded-full"
+                className={`w-full h-full object-cover rounded-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                loading="eager"
+                onLoad={handleImageLoad}
+                width="208" 
+                height="208"
               />
             </div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-skyBlue/20 via-purple-400/20 to-pink-300/20 animate-pulse" />
