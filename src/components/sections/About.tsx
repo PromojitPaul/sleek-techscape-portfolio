@@ -16,7 +16,8 @@ export const AboutSection = () => {
             About Me
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">
-            Professional Summary
+{/*             Professional Summary */}
+            Bug Hunter
           </h2>
           <div className="w-24 h-1 bg-skyBlue/30 mx-auto rounded-full"></div>
         </div>
@@ -25,7 +26,7 @@ export const AboutSection = () => {
           {/* About Text */}
           <div className="glass-card h-full flex flex-col">
             <h3 className="text-xl md:text-2xl font-semibold text-gradient-blue mb-4">
-              My Background
+              Summary
             </h3>
             <p className="text-white/80 leading-relaxed mb-6">
               I'm a dynamic SDET/QA expert with medium-level Python skills and a knack for identifying algorithmic errors through detailed test scenario design. 
