@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Cpu, Clock, Users, Brain } from 'lucide-react';
+import { Cpu, Code, Server, Rocket, Workflow, Database, GitBranch, TerminalSquare } from 'lucide-react';
 import FloatingElement from '../ui/FloatingElement';
 import { cn } from '@/lib/utils';
 
@@ -15,29 +15,42 @@ interface SoftSkill {
   icon: React.ReactNode;
 }
 
+// Updated skills data based on user request
 const technicalSkills: Skill[] = [
-  { name: "Manual Testing", level: 90, category: "Testing" },
-  { name: "Cypress", level: 85, category: "Testing" },
-  { name: "Selenium", level: 85, category: "Testing" },
-  { name: "JAVA", level: 70, category: "Programming" },
-  { name: "JavaScript", level: 75, category: "Programming" },
-  { name: "Node.js", level: 65, category: "Programming" },
-  { name: "Python", level: 75, category: "Programming" },
-  { name: "API Testing", level: 80, category: "Testing" },
-  { name: "Postman", level: 80, category: "Tools" },
-  { name: "Appium", level: 60, category: "Tools" },
-  { name: "Git", level: 75, category: "Tools" },
-  { name: "SQL", level: 70, category: "Database" },
-  { name: "Jira", level: 85, category: "Tools" },
+  // Testing & Automation
+  { name: "Selenium", level: 88, category: "Testing & Automation" },
+  { name: "Cypress", level: 85, category: "Testing & Automation" },
+  { name: "Postman", level: 82, category: "Testing & Automation" },
+  { name: "JMeter", level: 78, category: "Testing & Automation" },
+  { name: "TestNG", level: 80, category: "Testing & Automation" },
+  { name: "API Testing", level: 85, category: "Testing & Automation" },
+  
+  // Programming
+  { name: "Java", level: 75, category: "Programming" },
+  { name: "JavaScript", level: 78, category: "Programming" },
+  { name: "Python", level: 82, category: "Programming" },
+  { name: "TypeScript", level: 70, category: "Programming" },
+  
+  // Tools & Frameworks
+  { name: "Jenkins", level: 75, category: "Tools & Frameworks" },
+  { name: "Git", level: 80, category: "Tools & Frameworks" },
+  { name: "Docker", level: 72, category: "Tools & Frameworks" },
+  { name: "Cucumber", level: 76, category: "Tools & Frameworks" },
+  
+  // Expertise
+  { name: "Test Automation", level: 88, category: "Expertise" },
+  { name: "Performance Testing", level: 80, category: "Expertise" },
+  { name: "CI/CD", level: 78, category: "Expertise" },
 ];
 
 const softSkills: SoftSkill[] = [
   { name: "Attention to Detail", icon: <Cpu className="w-5 h-5 text-skyBlue" /> },
-  { name: "Adaptability", icon: <Brain className="w-5 h-5 text-skyBlue" /> },
-  { name: "Time Management", icon: <Clock className="w-5 h-5 text-skyBlue" /> },
-  { name: "Teamwork", icon: <Users className="w-5 h-5 text-skyBlue" /> },
+  { name: "Adaptability", icon: <Rocket className="w-5 h-5 text-purple-400" /> },
+  { name: "Time Management", icon: <Workflow className="w-5 h-5 text-pink-400" /> },
+  { name: "Teamwork", icon: <GitBranch className="w-5 h-5 text-skyBlue" /> },
 ];
 
+// Get unique categories
 const categories = Array.from(new Set(technicalSkills.map(skill => skill.category)));
 
 export const SkillsSection = () => {
@@ -50,29 +63,32 @@ export const SkillsSection = () => {
 
   return (
     <section id="skills" className="section bg-deepBlack relative overflow-hidden">
-      {/* Background gradient */}
+      {/* Enhanced background with multiple gradients */}
       <div className="absolute inset-0 opacity-5 bg-gradient-radial from-skyBlue to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,_rgba(93,_217,_255,_0.05),_rgba(228,_168,_249,_0.05))]"></div>
       
       <div className="max-container relative z-10">
-        {/* Section Title */}
+        {/* Section Title with enhanced styling */}
         <div className="text-center mb-16">
-          <span className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-skyBlue text-xs font-medium tracking-wider uppercase mb-4 inline-block">
-            Skills
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">
-            Technical Proficiency
-          </h2>
-          <div className="w-24 h-1 bg-skyBlue/30 mx-auto rounded-full"></div>
+          <FloatingElement intensity={0.3}>
+            <span className="px-4 py-1 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-skyBlue text-xs font-medium tracking-wider uppercase mb-4 inline-block shadow-glow">
+              Skills & Expertise
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-skyBlue/90 to-purple-400/80 bg-clip-text text-transparent mb-6">
+              Technical Proficiency
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-skyBlue via-purple-400 to-pink-400 mx-auto rounded-full"></div>
+          </FloatingElement>
         </div>
         
-        {/* Category Filter */}
+        {/* Category Filter with enhanced futuristic styling */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           <button
             onClick={() => setSelectedCategory(null)}
             className={cn(
-              "px-4 py-2 rounded-full text-sm font-medium transition-all interactive-element",
+              "px-4 py-2 rounded-full text-sm font-medium transition-all interactive-element backdrop-blur-sm",
               selectedCategory === null
-                ? "bg-skyBlue text-white shadow-glow"
+                ? "bg-gradient-to-r from-skyBlue to-blue-500 text-white shadow-glow border border-white/20"
                 : "bg-white/5 text-white/80 border border-white/10 hover:bg-white/10"
             )}
           >
@@ -84,9 +100,9 @@ export const SkillsSection = () => {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all interactive-element",
+                "px-4 py-2 rounded-full text-sm font-medium transition-all interactive-element backdrop-blur-sm",
                 selectedCategory === category
-                  ? "bg-skyBlue text-white shadow-glow"
+                  ? "bg-gradient-to-r from-skyBlue to-blue-500 text-white shadow-glow border border-white/20"
                   : "bg-white/5 text-white/80 border border-white/10 hover:bg-white/10"
               )}
             >
@@ -95,11 +111,11 @@ export const SkillsSection = () => {
           ))}
         </div>
         
-        {/* Skills Grid */}
+        {/* Skills Grid with enhanced styling and animations */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-20">
           {filteredSkills.map((skill, index) => {
             // Calculate a custom intensity based on skill level
-            const intensity = 0.2 + (skill.level / 100) * 0.3;
+            const intensity = 0.3 + (skill.level / 100) * 0.4;
             
             return (
               <FloatingElement 
@@ -107,12 +123,12 @@ export const SkillsSection = () => {
                 delay={index * 50} 
                 intensity={intensity}
                 className="h-full"
-                rotateIntensity={0.5}
+                rotateIntensity={0.8}
               >
                 <div 
                   className={cn(
-                    "glass-card flex flex-col items-center justify-center p-4 h-full transition-all duration-300 text-center",
-                    hoveredSkill === skill.name ? "shadow-glow" : ""
+                    "glass-card flex flex-col items-center justify-center p-4 h-full transition-all duration-300 text-center border border-white/10 backdrop-blur-md",
+                    hoveredSkill === skill.name ? "shadow-glow border-skyBlue/30" : ""
                   )}
                   onMouseEnter={() => setHoveredSkill(skill.name)}
                   onMouseLeave={() => setHoveredSkill(null)}
@@ -120,7 +136,13 @@ export const SkillsSection = () => {
                   <div
                     className="w-16 h-16 flex items-center justify-center mb-3 relative"
                     style={{
-                      background: `conic-gradient(#33C3F0 ${skill.level}%, transparent 0)`,
+                      background: skill.category === "Testing & Automation" 
+                        ? `conic-gradient(#33C3F0 ${skill.level}%, transparent 0)`
+                        : skill.category === "Programming" 
+                        ? `conic-gradient(#A78BFA ${skill.level}%, transparent 0)`
+                        : skill.category === "Tools & Frameworks"
+                        ? `conic-gradient(#F9A8D4 ${skill.level}%, transparent 0)`
+                        : `conic-gradient(#93C5FD ${skill.level}%, transparent 0)`,
                       borderRadius: "50%"
                     }}
                   >
@@ -133,7 +155,13 @@ export const SkillsSection = () => {
                     {skill.name}
                   </h3>
                   
-                  <span className="text-skyBlue text-xs">
+                  <span className={cn(
+                    "text-xs",
+                    skill.category === "Testing & Automation" ? "text-skyBlue" :
+                    skill.category === "Programming" ? "text-purple-400" :
+                    skill.category === "Tools & Frameworks" ? "text-pink-400" :
+                    "text-blue-300"
+                  )}>
                     {skill.category}
                   </span>
                 </div>
@@ -142,16 +170,18 @@ export const SkillsSection = () => {
           })}
         </div>
         
-        {/* Soft Skills */}
+        {/* Soft Skills with enhanced styling */}
         <div className="mt-12">
           <div className="text-center mb-12">
-            <span className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-skyBlue text-xs font-medium tracking-wider uppercase mb-4 inline-block">
-              Additional
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-6">
-              Soft Skills
-            </h2>
-            <div className="w-16 h-1 bg-skyBlue/30 mx-auto rounded-full"></div>
+            <FloatingElement intensity={0.2}>
+              <span className="px-4 py-1 rounded-full bg-white/5 border border-white/20 text-skyBlue text-xs font-medium tracking-wider uppercase mb-4 inline-block backdrop-blur-md">
+                Additional
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-skyBlue/90 to-purple-400/80 bg-clip-text text-transparent mb-6">
+                Soft Skills
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-skyBlue via-purple-400 to-pink-400 mx-auto rounded-full"></div>
+            </FloatingElement>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -159,11 +189,12 @@ export const SkillsSection = () => {
               <FloatingElement 
                 key={skill.name} 
                 delay={index * 100} 
-                intensity={0.4}
+                intensity={0.5}
                 className="h-full"
+                rotateIntensity={0.7}
               >
-                <div className="glass-card flex flex-col items-center justify-center text-center h-full py-8">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <div className="glass-card flex flex-col items-center justify-center text-center h-full py-8 backdrop-blur-md border border-white/10 hover:border-white/30 transition-all">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4 backdrop-blur-md">
                     {skill.icon}
                   </div>
                   

@@ -40,27 +40,30 @@ export const HeroSection = () => {
 
   return (
     <section id="home" className="section bg-deepBlack relative overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 opacity-10 bg-gradient-radial from-skyBlue/20 to-transparent" />
+      {/* Enhanced gradient background with more vibrant colors */}
+      <div className="absolute inset-0 opacity-20 bg-gradient-radial from-skyBlue/30 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-400/10 via-pink-400/5 to-transparent"></div>
       
-      {/* Animated particles */}
+      {/* Animated particles with more vibrant colors */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <FloatingElement 
             key={i} 
             delay={getRandomDelay()}
-            intensity={0.5} 
+            intensity={0.8} 
             className="absolute"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
+              opacity: Math.random() * 0.6 + 0.2,
             }}
           >
             <div 
-              className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-skyBlue/50"
+              className={`w-1 h-1 md:w-2 md:h-2 rounded-full ${i % 3 === 0 ? 'bg-skyBlue/70' : i % 3 === 1 ? 'bg-purple-400/70' : 'bg-pink-300/70'}`}
               style={{
-                boxShadow: '0 0 10px rgba(51, 195, 240, 0.5)'
+                boxShadow: i % 3 === 0 ? '0 0 15px rgba(51, 195, 240, 0.8)' : 
+                          i % 3 === 1 ? '0 0 15px rgba(167, 139, 250, 0.8)' : 
+                          '0 0 15px rgba(249, 168, 212, 0.8)'
               }}
             />
           </FloatingElement>
@@ -71,7 +74,7 @@ export const HeroSection = () => {
         <div ref={parallaxRef} className="parallax-layer text-center">
           {/* Profile Image - Made BIGGER */}
           <div className="relative mb-8 inline-block">
-            <div className="w-40 h-40 sm:w-48 sm:h-48 overflow-hidden rounded-full border-2 border-skyBlue/50 p-1 glass">
+            <div className="w-44 h-44 sm:w-52 sm:h-52 overflow-hidden rounded-full border-2 border-skyBlue/60 p-1 glass">
               <img 
                 ref={imageRef}
                 src="/lovable-uploads/28fafc41-5780-4118-8775-6e8c1c19d72d.png" 
@@ -79,35 +82,35 @@ export const HeroSection = () => {
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <div className="absolute inset-0 rounded-full bg-skyBlue/10 animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-skyBlue/20 via-purple-400/20 to-pink-300/20 animate-pulse" />
           </div>
           
-          {/* Location tag */}
-          <div className="inline-flex items-center justify-center rounded-full bg-white/5 backdrop-blur-sm px-3 py-1 text-xs text-white/90 border border-white/10 mb-5">
+          {/* Location tag with enhanced styling */}
+          <div className="inline-flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs text-white/95 border border-white/20 mb-5 shadow-glow">
             📍 Kolkata, India
           </div>
           
-          {/* Name and Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient mb-4">
+          {/* Name and Title with enhanced gradient */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-white/90 to-skyBlue/80 bg-clip-text text-transparent mb-4">
             Promojit Paul
           </h1>
           
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gradient-blue mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-medium bg-gradient-to-r from-skyBlue via-purple-400/90 to-skyBlue/80 bg-clip-text text-transparent mb-6">
             SDET/QA Engineer
           </h2>
           
-          {/* Short intro */}
-          <p className="text-white/70 max-w-xl mx-auto mb-8 leading-relaxed">
+          {/* Short intro with lighter text */}
+          <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
             Dynamic SDET/QA expert with Python skills and a knack for identifying algorithmic errors. Leveraging Generative AI to enhance testing efficacy.
           </p>
           
-          {/* Social links */}
+          {/* Social links with enhanced styling */}
           <div className="flex justify-center gap-4 mb-8">
             <a 
               href="https://linkedin.com/in/promojitpaul" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="btn-glow flex items-center gap-2 rounded-full px-4 py-2 text-sm interactive-element"
+              className="bg-gradient-to-r from-skyBlue to-blue-500 flex items-center gap-2 rounded-full px-4 py-2 text-sm interactive-element shadow-glow border border-white/20 hover:shadow-lg transition-all duration-300"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4" />
@@ -117,7 +120,7 @@ export const HeroSection = () => {
               href="https://github.com/PromojitPaul" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all duration-300 text-white flex items-center gap-2 rounded-full px-4 py-2 text-sm interactive-element"
+              className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 text-white flex items-center gap-2 rounded-full px-4 py-2 text-sm interactive-element"
               aria-label="GitHub Profile"
             >
               <Github className="w-4 h-4" />
@@ -125,14 +128,14 @@ export const HeroSection = () => {
             </a>
           </div>
           
-          {/* Scroll down indicator */}
+          {/* Scroll down indicator with enhanced styling */}
           <button 
             onClick={handleScrollDown}
-            className="animate-bounce mt-8 text-white/50 flex flex-col items-center gap-2 interactive-element"
+            className="animate-bounce mt-8 text-white/60 flex flex-col items-center gap-2 interactive-element group"
             aria-label="Scroll Down"
           >
-            <span className="text-xs font-medium">Scroll Down</span>
-            <ArrowDown className="w-4 h-4" />
+            <span className="text-xs font-medium group-hover:text-skyBlue transition-colors">Scroll Down</span>
+            <ArrowDown className="w-4 h-4 group-hover:text-skyBlue transition-colors" />
           </button>
         </div>
       </div>
